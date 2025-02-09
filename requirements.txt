@@ -1,0 +1,10 @@
+crewai
+crewai[tools]
+langchain-google-genai
+langchain-community
+langchain-core
+streamlit
+ipykernel
+python-dotenv
+gtts
+text-to-speech
