@@ -2,7 +2,7 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import streamlit as st
-import pyttsx3
+from gtts import gTTS
 from src.helper import *
 from docx import Document  # Import for generating .docx files
 from io import BytesIO
@@ -17,7 +17,7 @@ st.set_page_config(
     layout="wide"  # Optional: Makes the layout wider
 )
 
-engine = pyttsx3.init()
+
 
 def clean_text_for_speech(text):
     """
@@ -31,17 +31,10 @@ def clean_text_for_speech(text):
 
 # Function for offline speech synthesis (fixes disappearing issue)
 def generate_audio(text):
-    clean_text = clean_text_for_speech(text)  # Clean the text before speaking
-    
-    buffer = BytesIO()  
-    engine.save_to_file(clean_text, "temp_audio.mp3")  
-    engine.runAndWait()
-
-    with open("temp_audio.mp3", "rb") as f:
-        buffer.write(f.read())
-
-    buffer.seek(0)  
-    return buffer
+    tts = gTTS(text, lang="en")
+    temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
+    tts.save(temp_file.name)
+    return temp_file.name
 
 
 # Function to generate a .docx file
@@ -101,8 +94,8 @@ if page == "🏠 Home":
             # Generate and Play Audio using gTTS
             st.subheader("🔊 Listen to Podcast")
             st.markdown("Click below to hear the podcast transcript read aloud.")
-            audio_buffer = generate_audio(text)
-            st.audio(audio_buffer, format="audio/mp3")
+            audio_file = generate_audio(text)
+            st.audio(audio_file, format="audio/mp3")
 
 elif page == "ℹ️ About":
     st.title("📖 About the App")

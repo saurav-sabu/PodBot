@@ -12,3 +12,4 @@ agno
 duckduckgo-search
 langchain-groq
 python-docx
+gtts
