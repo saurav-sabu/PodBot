@@ -7,6 +7,9 @@ from gtts import gTTS
 import tempfile 
 import urllib.request  # Ensure urllib.request is available
 import re
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 
 st.set_page_config(
