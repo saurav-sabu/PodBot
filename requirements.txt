@@ -11,5 +11,4 @@ agno
 duckduckgo-search
 langchain-groq
 python-docx
-sqlite3 >= 3.35.0
-chroma
+pysqlite3-binary
