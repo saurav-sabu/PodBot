@@ -6,10 +6,8 @@ langchain-core
 streamlit
 ipykernel
 python-dotenv
-gtts
-text-to-speech
 pyttsx3
 agno
 duckduckgo-search
-groq
+langchain-groq
 python-docx
