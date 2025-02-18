@@ -31,6 +31,7 @@ def clean_text_for_speech(text):
 
 # Function for offline speech synthesis (fixes disappearing issue)
 def generate_audio(text):
+    text = clean_text_for_speech(text)
     tts = gTTS(text, lang="en")
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
     tts.save(temp_file.name)
