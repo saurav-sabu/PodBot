@@ -8,3 +8,8 @@ ipykernel
 python-dotenv
 gtts
 text-to-speech
+pyttsx3
+agno
+duckduckgo-search
+groq
+python-docx
