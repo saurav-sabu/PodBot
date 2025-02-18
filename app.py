@@ -7,7 +7,6 @@ import pyttsx3
 from src.helper import *
 from docx import Document  # Import for generating .docx files
 from io import BytesIO
-from gtts import gTTS
 import tempfile 
 import urllib.request  # Ensure urllib.request is available
 import re
